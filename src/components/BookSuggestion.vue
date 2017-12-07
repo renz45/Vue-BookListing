@@ -1,5 +1,5 @@
 <template>
-  <li>{{book.title}} : {{book.author}}</li>
+  <li @click="$emit('add-suggestion', book.title, book.author)">{{book.title}} : {{book.author}}</li>
 </template>
 
 <script>

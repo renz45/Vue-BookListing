@@ -4,8 +4,9 @@
     <ul>
         <book-suggestion 
           v-for="suggestion in suggestions"
-          :key='suggestion'
+          :key='suggestion.id'
           :book='suggestion'
+          @add-suggestion='appendSuggestion'
           ></book-suggestion>
     </ul>
   </div>
@@ -18,12 +19,12 @@ import BookSuggestion from './BookSuggestion';
 export default {
   name: 'BookSuggestions',
   components: {
-    BookSuggestion
+    BookSuggestion,
   },
   data() {
     return {
       suggestions: [],
-    }
+    };
   },
   methods: {
     fetchSuggestions() {
@@ -36,9 +37,11 @@ export default {
     },
     buildTopBooks(books) {
       books.forEach(({ title, author }) => {
-        console.log(title, author);
-        this.suggestions.push({ title: title, author: author });
+        this.suggestions.push({ title, author });
       });
+    },
+    appendSuggestion(title, author) {
+      this.$emit('appendBook', title, author);
     },
   },
   beforeMount() {

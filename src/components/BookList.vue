@@ -4,14 +4,14 @@
     <ul>
       <book-item
         v-for='book in books'
-        :key='book'
+        :key='book.id'
         :book='book'
       ></book-item>
     </ul>
     <br>
     <book-form @addBook='appendBook'></book-form>
     <br><hr>
-    <book-suggestions></book-suggestions>
+    <book-suggestions @appendBook='appendBook'></book-suggestions>
   </div>
 </template>
 
@@ -40,9 +40,9 @@ export default {
   },
   methods: {
     appendBook(bookTitle, bookAuthor) {
-      this.books.push({title: bookTitle, author: bookAuthor})
-    }
-  }
+      this.books.push({ title: bookTitle, author: bookAuthor });
+    },
+  },
 };
 </script>
 
