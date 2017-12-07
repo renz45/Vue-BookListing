@@ -1,5 +1,7 @@
 <template>
-  <li>{{book.title}} : {{book.author}} - <span>{{book.state}}</span></li>
+  <li>
+    {{book.title}} : {{book.author}}
+  </li>
 </template>
 
 <script>

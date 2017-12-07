@@ -19,10 +19,11 @@ export default {
   data() {
     return {
       title: 'All Books',
+      states: ['Want to Read', 'Read', 'Reading'],
       books: [
-        { title: 'Self-Reliance', author: 'Ralph Waldo Emerson', state: 'Want To Read' },
-        { title: 'American Gods', author: 'Neil Gaiman', state: 'Want To Read' },
-        { title: 'Amusing Ourselves to Death', author: 'Neil Postman', state: 'Want To Read' },
+        { title: 'Self-Reliance', author: 'Ralph Waldo Emerson' },
+        { title: 'American Gods', author: 'Neil Gaiman' },
+        { title: 'Amusing Ourselves to Death', author: 'Neil Postman' },
       ],
     };
   },
