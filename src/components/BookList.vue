@@ -2,23 +2,32 @@
   <div>
     <h1>{{title}}</h1>
     <ul>
-      <li v-for="book in books">{{book.title}} : {{book.author}} - <span>{{book.state}}</span></li>
+      <book-item
+        v-for='book in books'
+        :key='book'
+        :book='book'
+      ></book-item>
     </ul>
   </div>
 </template>
 
 <script>
+import BookItem from './BookItem';
+
 export default {
   name: 'BookList',
   data() {
     return {
       title: 'All Books',
       books: [
-        {title: 'Self-Reliance', author: 'Ralph Waldo Emerson', state: 'Want To Read'},
-        {title: 'American Gods', author: 'Neil Gaiman', state: 'Want To Read'},
-        {title: 'Amusing Ourselves to Death', author: 'Neil Postman', state: 'Want To Read'},
-      ]
+        { title: 'Self-Reliance', author: 'Ralph Waldo Emerson', state: 'Want To Read' },
+        { title: 'American Gods', author: 'Neil Gaiman', state: 'Want To Read' },
+        { title: 'Amusing Ourselves to Death', author: 'Neil Postman', state: 'Want To Read' },
+      ],
     };
+  },
+  components: {
+    BookItem,
   },
 };
 </script>
@@ -31,12 +40,5 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-li {
-  display: block;
-  margin: 0 10px;
-}
-li span {
-  font-style: italic;
-  font-size: 0.8em
-}
+
 </style>
