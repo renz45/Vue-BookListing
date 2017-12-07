@@ -1,12 +1,10 @@
 <template>
-  <li>
-    {{book.title}} : {{book.author}}
-  </li>
+  <li>Cats Cradle : Kurt Vonnegut</li>
 </template>
 
 <script>
 export default {
-  name: 'BookItem',
+  name: 'BookSuggestion',
   props: ['book'],
 };
 </script>
