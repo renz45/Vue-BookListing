@@ -1,5 +1,5 @@
 <template>
-  <li>Cats Cradle : Kurt Vonnegut</li>
+  <li>{{book.title}} : {{book.author}}</li>
 </template>
 
 <script>

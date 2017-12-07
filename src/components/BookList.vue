@@ -11,15 +11,14 @@
     <br>
     <book-form @addBook='appendBook'></book-form>
     <br><hr>
-    <h2>Book Suggestions</h2>
-    <book-suggestion></book-suggestion>
+    <book-suggestions></book-suggestions>
   </div>
 </template>
 
 <script>
 import BookItem from './BookItem';
 import BookForm from './BookForm';
-import BookSuggestion from './BookSuggestion';
+import BookSuggestions from './BookSuggestions';
 
 export default {
   name: 'BookList',
@@ -37,7 +36,7 @@ export default {
   components: {
     BookItem,
     BookForm,
-    BookSuggestion,
+    BookSuggestions,
   },
   methods: {
     appendBook(bookTitle, bookAuthor) {
