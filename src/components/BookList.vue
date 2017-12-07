@@ -2,9 +2,7 @@
   <div>
     <h1>{{title}}</h1>
     <ul>
-      <li>Self-Reliance : Ralph Waldo Emerson - <span>Read</span></li>
-      <li>American Gods : Neil Gaiman - <span>Reading</span></li>
-      <li>Amusing Ourselves to Death : Neil Postman - <span>Want to Read</span></li>
+      <li v-for="book in books">{{book.title}} : {{book.author}} - <span>{{book.state}}</span></li>
     </ul>
   </div>
 </template>
@@ -15,6 +13,11 @@ export default {
   data() {
     return {
       title: 'All Books',
+      books: [
+        {title: 'Self-Reliance', author: 'Ralph Waldo Emerson', state: 'Want To Read'},
+        {title: 'American Gods', author: 'Neil Gaiman', state: 'Want To Read'},
+        {title: 'Amusing Ourselves to Death', author: 'Neil Postman', state: 'Want To Read'},
+      ]
     };
   },
 };
