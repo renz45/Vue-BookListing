@@ -5,24 +5,16 @@
 
 var webpackConfig = require('../../build/webpack.test.conf');
 
-const args = require('minimist')(process.argv.slice(2));
-
 module.exports = function (config) {
   config.set({
     // to run in additional browsers:
     // 1. install corresponding karma launcher
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeDebugging'],
     frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
-    reporters: ['spec', 'coverage', 'json-result'],
-    client: {
-      args: [args],
-    },
-    files: [
-      '../../node_modules/babel-polyfill/dist/polyfill.js',
-      './index.js',
-    ],
+    reporters: ['spec', 'coverage'],
+    files: ['./index.js'],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap'],
     },
@@ -37,9 +29,11 @@ module.exports = function (config) {
         { type: 'text-summary' },
       ],
     },
-    jsonResultReporter: {
-      outputFile: 'karma-result.json',
-      isSynchronous: true,
+    customLaunchers: {
+      ChromeDebugging: {
+        base: 'Chrome',
+        flags: ['--remote-debugging-port=9333'],
+      },
     },
   });
 };

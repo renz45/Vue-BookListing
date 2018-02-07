@@ -2,9 +2,11 @@ import Vue from 'vue';
 
 Vue.config.productionTip = false;
 
-// require all test files (files that ends with .spec.js)
-const testsContext = require.context('./specs', true, /\.spec$/);
-testsContext.keys().forEach(testsContext);
+const args = __karma__.config.args;
+const part = args[0].part ? args[0].part : '';
+
+const testsContext = require.context('./specs/', true, /\.spec$/);
+testsContext.keys().filter(key => key.includes(part)).forEach(testsContext);
 
 // require all src files except main.js for coverage.
 // you can also change this to match only the subset of files that

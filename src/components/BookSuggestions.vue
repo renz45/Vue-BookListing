@@ -28,12 +28,12 @@ export default {
   },
   methods: {
     fetchSuggestions() {
-      const url = '../static/books.json';
+      const url = '/static/books.json';
       axios.get(url)
         .then((response) => {
           this.buildTopBooks(response.data);
         })
-        .catch(error => console.log(error));
+        .catch(error => error);
     },
     buildTopBooks(books) {
       books.forEach(({ title, author }) => {

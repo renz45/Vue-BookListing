@@ -6,7 +6,7 @@
         v-for='book in books'
         :key='book.id'
         :book='book'
-      ></book-item>
+      >{{book.title}}:{{book.author}}</book-item>
     </ul>
     <br>
     <book-form @addBook='appendBook'></book-form>
@@ -54,5 +54,4 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-
 </style>
