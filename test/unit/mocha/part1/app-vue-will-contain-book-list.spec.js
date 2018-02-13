@@ -9,8 +9,8 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 
-describe('App.vue contains BookList', () => {
-  it('should contain booklist in App.vue @app-vue-will-contain-book-list', () => {
+describe('App.vue', () => {
+  it('should include booklist in App.vue @app-vue-will-use-book-list', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/App.vue'), 'utf8');

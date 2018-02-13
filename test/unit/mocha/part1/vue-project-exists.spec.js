@@ -1,12 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('chai').assert;
-const parse5 = require('parse5');
-const esquery = require('esquery');
-const esprima = require('esprima');
-const jsdom = require('jsdom');
-
-const { JSDOM } = jsdom;
 
 
 describe('HelloWorld.vue', () => {

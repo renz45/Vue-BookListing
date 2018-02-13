@@ -4,13 +4,10 @@ const assert = require('chai').assert;
 const parse5 = require('parse5');
 const esquery = require('esquery');
 const esprima = require('esprima');
-const jsdom = require('jsdom');
-
-const { JSDOM } = jsdom;
 
 
 describe('BookList.vue', () => {
-  it('should contain BookItem component @book-list-vue-contains-book-item', () => {
+  it('should contain BookItem component @book-list-vue-contains-book-item-export', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
@@ -23,13 +20,9 @@ describe('BookList.vue', () => {
     const nodes = doc.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
 
-    // Test for correct import statement
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    let results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
-    assert(results.length > 0, './BookItem was not imported');
-
     // Test for bookList definition in the component key
-    results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookItem]');
+    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    const results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookItem]');
     assert(results.length > 0, 'BookItem is not defined under components property in object');
   });
 });

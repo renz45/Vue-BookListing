@@ -5,8 +5,8 @@ const parse5 = require('parse5');
 const esquery = require('esquery');
 const esprima = require('esprima');
 
-describe('Swap Hello for BookList Component', () => {
-  it('should contain a BookList component with title data element @swap-hello-world-for-book-list', () => {
+describe('App.vue', () => {
+  it('should contain a BookList component with title data element @app-should-use-book-list-with-title-element', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');

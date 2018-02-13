@@ -12,6 +12,9 @@
     "unit:part2": "npm run unit -- --part part2",
     "mocha": "NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js'",
     "mocha:part1": "NODE_ENV=test mocha 'test/unit/mocha/part1/*.spec.js'",
+    "mocha:part2": "NODE_ENV=test mocha 'test/unit/mocha/part2/*.spec.js'",
+    "mocha:part3": "NODE_ENV=test mocha 'test/unit/mocha/part3/*.spec.js'",
+    "mocha:part4": "NODE_ENV=test mocha 'test/unit/mocha/part4/*.spec.js'",
     "test": "npm run mocha && npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js"
@@ -26,6 +29,7 @@
     "jsdom": "^11.5.1",
     "minimist": "^1.2.0",
     "nightmare": "^2.10.0",
+    "nwmatcher": "^1.4.3",
     "parse5": "^3.0.3",
     "query-selector": "^1.0.9",
     "vue": "^2.5.2"

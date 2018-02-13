@@ -6,13 +6,13 @@ const esquery = require('esquery');
 const esprima = require('esprima');
 
 
-describe('BookItem.vue', () => {
-  it('should contain props @book-item-contains-props-with-book', () => {
+describe('BookList.vue', () => {
+  it('should contain BookItem component @book-list-vue-contains-book-item-import', () => {
     let file;
     try {
-      file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookItem.vue'), 'utf8');
+      file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
     } catch (e) {
-      assert(false, 'The BookItem.vue file does not exist');
+      assert(false, 'The BookList.vue file does not exist');
     }
 
     // Parse document and retrieve the script section
@@ -22,7 +22,7 @@ describe('BookItem.vue', () => {
 
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    const results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"] Literal[value="book"]');
+    const results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
     assert(results.length > 0, './BookItem was not imported');
   });
 });

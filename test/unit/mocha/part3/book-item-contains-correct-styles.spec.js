@@ -26,13 +26,13 @@ describe('BookItem.vue', () => {
     assert(results, 'There is no li present in your style section');
 
     // Test for one of the fonts present in font-family
-    assert(results.style['display'] === 'block', 'Your li display is not set to block');
+    assert(results.style.display === 'block', 'Your li display is not set to block');
   });
 });
 
 
 describe('BookList.vue', () => {
-  it('should not contain styles for list item @book-item-contains-list-styles', () => {
+  it('should not contain styles for list item @book-list-should-not-contain-li-styles', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
