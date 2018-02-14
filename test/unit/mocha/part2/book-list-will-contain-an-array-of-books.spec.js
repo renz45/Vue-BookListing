@@ -25,7 +25,9 @@ describe('BookList.vue', () => {
 
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    const results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="books"] Property[value.value="American Gods"]')
+    
+    // TODO: add extra assert to check if the array is in data() first, then after that assert passes let these tests run to check the properties.
+    const results = esquery(ast, 'ExportDefaultDeclaration Property[key.name=data] Property[key.name="books"] Property[value.value="American Gods"]')
     assert(results.length > 0, 'The book with a title of American Gods is not in your books array');
   });
 });
