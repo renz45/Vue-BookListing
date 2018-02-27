@@ -15,6 +15,7 @@
     "mocha:part2": "NODE_ENV=test mocha 'test/unit/mocha/part2/*.spec.js'",
     "mocha:part3": "NODE_ENV=test mocha 'test/unit/mocha/part3/*.spec.js'",
     "mocha:part4": "NODE_ENV=test mocha 'test/unit/mocha/part4/*.spec.js'",
+    "mocha:part5": "NODE_ENV=test mocha 'test/unit/mocha/part5/*.spec.js'",
     "test": "npm run mocha && npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js"

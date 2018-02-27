@@ -9,9 +9,9 @@
       >{{book.title}}:{{book.author}}</book-item>
     </ul>
     <br>
-    <book-form @addBook='appendBook'></book-form>
+    <book-form @addbook='appendBook'></book-form>
     <br><hr>
-    <book-suggestions @appendBook='appendBook'></book-suggestions>
+    <book-suggestions @appendbook='appendBook'></book-suggestions>
   </div>
 </template>
 
