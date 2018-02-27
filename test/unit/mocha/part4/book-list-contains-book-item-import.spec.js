@@ -22,7 +22,10 @@ describe('BookList.vue', () => {
 
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    const results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
+    let results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
     assert(results.length > 0, './BookItem was not imported');
+
+    results = esquery(ast, 'ImportSpecifier');
+    assert(results.length == 0, 'do not use curly brace style importing for vue component imports');
   });
 });
