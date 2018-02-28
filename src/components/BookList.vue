@@ -8,17 +8,15 @@
         :book='book'
       >{{book.title}}:{{book.author}}</book-item>
     </ul>
-    <br>
-    <book-form @addBook='appendBook'></book-form>
     <br><hr>
-    <book-suggestions @appendBook='appendBook'></book-suggestions>
+    <h2>Add New Book</h2>
+    <book-form @addBook='appendBook'></book-form>
   </div>
 </template>
 
 <script>
 import BookItem from './BookItem';
 import BookForm from './BookForm';
-import BookSuggestions from './BookSuggestions';
 
 export default {
   name: 'BookList',
@@ -36,7 +34,6 @@ export default {
   components: {
     BookItem,
     BookForm,
-    BookSuggestions,
   },
   methods: {
     appendBook(bookTitle, bookAuthor) {
