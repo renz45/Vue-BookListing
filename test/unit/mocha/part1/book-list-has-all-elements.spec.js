@@ -19,14 +19,14 @@ describe('BookList.vue', () => {
 
     // Parse for template
     const template = nodes.filter(node => node.nodeName === 'template');
-    assert(template, 'BookList does not contain a template element');
+    assert(template.length > 0, 'BookList does not contain a template element');
 
     // Parse for script
     const script = nodes.filter(node => node.nodeName === 'script');
-    assert(script, 'BookList does not contain a script element');
+    assert(script.length > 0, 'BookList does not contain a script element');
 
     // Parse for style
     const style = nodes.filter(node => node.nodeName === 'style');
-    assert(style, 'BookList does not contain a style element');
+    assert(style.length > 0, 'BookList does not contain a style element');
   });
 });
