@@ -2,10 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('chai').assert;
 const parse5 = require('parse5');
+const jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
 
 
 describe('BookList.vue', () => {
-  it('should contain all component elements @book-list-contains-elements', () => {
+  it('should contain book-form element @book-list-contains-book-form', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
@@ -17,16 +20,14 @@ describe('BookList.vue', () => {
     const doc = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
     const nodes = doc.childNodes;
 
-    // Parse for template
+    // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
-    assert(template.length > 0, 'BookList does not contain a template element');
+    const content = parse5.serialize(template[0].content);
+    const dom = new JSDOM(content, { includeNodeLocations: true, SVG_LCASE: true });
+    const document = dom.window.document;
 
-    // Parse for script
-    const script = nodes.filter(node => node.nodeName === 'script');
-    assert(script.length > 0, 'BookList does not contain a script element');
-
-    // Parse for style
-    const style = nodes.filter(node => node.nodeName === 'style');
-    assert(style.length > 0, 'BookList does not contain a style element');
+    // Test for booklist in the app div
+    const results = document.querySelector('div');
+    assert(results.innerHTML.includes('book-form'), 'BookList does not contain any book-form tags');
   });
 });

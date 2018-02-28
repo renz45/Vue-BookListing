@@ -7,7 +7,7 @@ const esprima = require('esprima');
 
 
 describe('BookList.vue', () => {
-  it('should contain BookItem component @book-list-vue-contains-book-item-import', () => {
+  it('should contain BookForm component @book-list-vue-contains-book-form-import', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
@@ -22,10 +22,10 @@ describe('BookList.vue', () => {
 
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    let results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
+    let results = esquery(ast, 'ImportDeclaration[source.value="./BookForm"]');
     assert(results.length > 0, './BookItem was not imported');
 
-    results = esquery(ast, 'ImportSpecifier');
-    assert(results.length == 0, 'do not use curly brace style importing for vue component imports');
+    results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookForm]');
+    assert(results.length > 0, 'BookForm is not defined under components property in object');
   });
 });
