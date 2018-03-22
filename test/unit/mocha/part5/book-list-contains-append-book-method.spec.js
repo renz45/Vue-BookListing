@@ -19,15 +19,15 @@ describe('BookList.vue', () => {
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const methods = esquery(ast, 'Property[key.name=methods]');
-    assert(methods.length > 0, 'the methods declaration is not present');
+    assert(methods.length > 0, 'The BookForm\'s `methods` declaration is not present');
 
     let results = esquery(methods[0], 'Identifier[name="appendBook"]');
-    assert(results.length > 0, 'appendBook method is not defined');
+    assert(results.length > 0, 'The BookForm\'s `methods` object is not defining an `appendBook()` method');
 
     results = esquery(methods[0], 'Property[key.name="appendBook"] > FunctionExpression > Identifier[name="bookTitle"]');
-    assert(results.length > 0, 'bookTitle is not an argument inside the the appendBook Method');
+    assert(results.length > 0, 'The `appendBook()` method is not being called with `bookTitle` as the first argument');
 
     results = esquery(methods[0], 'Property[key.name="appendBook"] > FunctionExpression > Identifier[name="bookAuthor"]');
-    assert(results.length > 0, 'bookAuthor is not an argument inside the the appendBook Method');
+    assert(results.length > 0, 'The `appendBook()` method is not being called with `bookAuthor` as the first argument');
   });
 });

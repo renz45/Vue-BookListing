@@ -19,12 +19,12 @@ describe('BookForm.vue', () => {
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const data = esquery(ast, 'Property[key.name=data]');
-    assert(data.length > 0, 'data function return is not present');
+    assert(data.length > 0, 'The BookList\'s `data()` method\'s return is not present');
 
     let results = esquery(data[0], 'Property[key.name=bookTitle] > .value[value=""]');
-    assert(results.length > 0, 'bookTitle property is not defined with a blank string value');
+    assert(results.length > 0, 'The BookList\'s `bookTitle` property is not defined with value of `\'\'`');
 
     results = esquery(data[0], 'Property[key.name=bookAuthor] > .value[value=""]');
-    assert(results.length > 0, 'bookAuthor property is not defined with a blank string value');
+    assert(results.length > 0, 'The BookList\'s `bookAuthor` property is not defined with value of `\'\'`');
   });
 });

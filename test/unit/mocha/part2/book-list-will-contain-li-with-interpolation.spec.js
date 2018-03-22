@@ -31,8 +31,8 @@ describe('BookList.vue', () => {
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {
-      assert(results.innerHTML.includes('li'), 'BookList does not contain any li tags');
-      assert(results.innerHTML.includes('v-for="book in books"'), 'The li should have a v-for statement containing book in books');
+      assert(results.innerHTML.includes('li'), 'The BookList template does not contain any `li` tags');
+      assert(results.innerHTML.includes('v-for="book in books"'), 'The BookList template\'s `li` tag does not have a `v-for` statement containing `book in books`');
     }
   });
 });

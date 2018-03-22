@@ -28,6 +28,6 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('h1');
-    assert(results.innerHTML === '{{title}}', 'BookList does not contain the {{title}} in an h1');
+    assert(results.innerHTML === '{{title}}', 'The BookList template does not contain the `{{title}}` in an `h1`');
   });
 });

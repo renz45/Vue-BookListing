@@ -24,9 +24,9 @@ describe('BookItem.vue', () => {
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
 
     let results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="name"] Literal[value="BookItem"]');
-    assert(results.length > 0, 'The `BookItem` name was not defined under export default');
+    assert(results.length > 0, 'The BookItem component does not have a `name` property with the value of `BookItem` defined in the `export default` section');
 
     results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"] Literal[value="book"]');
-    assert(results.length > 0, 'Props was not defined with an array value of book');
+    assert(results.length > 0, 'The BookItem component does not have a `props` property with an array value containing the string `book` defined in the `export default` section');
   });
 });

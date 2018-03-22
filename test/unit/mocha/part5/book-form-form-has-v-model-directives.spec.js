@@ -30,8 +30,8 @@ describe('BookForm.vue', () => {
     const results = document.querySelector('form');
     assert(results.length > 0, 'BookForm does not contain a form');
 
-    assert(results.innerHTML.includes('v-model="bookTitle"'), 'BookForm does not have an v-model for bookTitle');
+    assert(results.innerHTML.includes('v-model="bookTitle"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookTitle`');
 
-    assert(results.innerHTML.includes('v-model="bookAuthor"'), 'BookForm does not have an v-model for bookAuthor');
+    assert(results.innerHTML.includes('v-model="bookAuthor"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookAuthor`');
   });
 });

@@ -34,7 +34,7 @@ describe('BookList.vue', () => {
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {
-      assert(results.innerHTML.includes('li'), 'BookList does not contain any li tags');
+      assert(results.innerHTML.includes('li'), 'The BookList template does not contain any `li` tags');
     }
   });
 });

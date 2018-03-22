@@ -31,8 +31,8 @@ describe('BookList.vue', () => {
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {
-      assert(results.innerHTML.includes('li'), 'BookList does not contain any li tags');
-      assert(results.innerHTML.includes('{{book.title}}:{{book.author}}'), 'The li should have a interpolate "{{book.title}}:{{book.author}}"');
+      assert(results.innerHTML.includes('li'), 'The BookList template does not contain any `li` tags');
+      assert(results.innerHTML.includes('{{book.title}}:{{book.author}}'), 'The BookList template\'s `li` element does not contain these interpolated values `{{book.title}}:{{book.author}}`');
     }
   });
 });
