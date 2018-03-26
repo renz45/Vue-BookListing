@@ -31,6 +31,6 @@ describe('BookItem.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('li');
-    assert(results.innerHTML.includes('book.title'), 'BookItem does not contain an li with book data');
+    assert(results.innerHTML.includes('book.title'), 'The BookItem template does not contain an `li` tag');
   });
 });

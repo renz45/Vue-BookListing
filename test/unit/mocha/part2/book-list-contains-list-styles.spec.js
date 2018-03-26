@@ -23,9 +23,9 @@ describe('BookList.vue', () => {
 
     // Test for #app present in the styles
     const results = parsed.cssRules.find(node => node.selectorText === 'ul');
-    assert(results, 'There is no ul present in your style section');
+    assert(results, 'There is no `ul` present in in BookList\'s styles');
 
     // Test for one of the fonts present in font-family
-    assert(results.style['list-style-type'] === 'none', 'Your list-style-type is not set to none');
+    assert(results.style['list-style-type'] === 'none', 'The `ul` elements `list-style-type` is not set to `none` in BookList\'s styles');
   });
 });

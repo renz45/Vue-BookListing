@@ -28,8 +28,8 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('ul');
-    assert(results.innerHTML.includes('book-item'), 'BookList does not contain any book-item tags');
-    assert(results.innerHTML.includes('v-for="book in books"'), 'The book-item should have a v-for statement containing book in books');
-    assert(results.innerHTML.includes(':book="book"'), 'you need to define the book prop in the book-item tag');
+    assert(results.innerHTML.includes('book-item'), 'The BookList template does not contain any `book-item` tags');
+    assert(results.innerHTML.includes('v-for="book in books"'), 'The `book-item` tag does not have a `v-for` statement containing `book in books`');
+    assert(results.innerHTML.includes(':book="book"'), 'The `book-item` tag does not have a `book` prop with the value of `book`');
   });
 });

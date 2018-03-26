@@ -23,6 +23,6 @@ describe('BookList.vue', () => {
     // Test for bookList definition in the component key
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookItem]');
-    assert(results.length > 0, 'BookItem is not defined under components property in object');
+    assert(results.length > 0, 'The value of the `components` property is not an object containing `BookItem` in BookList.vue');
   });
 });

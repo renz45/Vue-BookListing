@@ -19,9 +19,9 @@ describe('App.vue', () => {
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const data = esquery(ast, 'Property[key.name=data]');
-    assert(data.length > 0, 'data function return is not present');
+    assert(data.length > 0, 'The BookList\'s `data()` method\'s return is not present');
 
     const results = esquery(data[0], 'Property[key.name=title] > .value[value="All Books"]');
-    assert(results.length > 0, 'title property is not defined with value of All Books');
+    assert(results.length > 0, 'The BookList\'s `title` property is not defined with value of `All Books`');
   });
 });

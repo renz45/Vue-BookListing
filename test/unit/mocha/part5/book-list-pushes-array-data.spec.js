@@ -6,7 +6,7 @@ const esquery = require('esquery');
 const esprima = require('esprima');
 
 describe('BookList.vue', () => {
-  it('should contain a methods that pushes to array contents @append-book-pushes-title-and-author', () => {
+  it('should contain a method that pushes to array contents @append-book-pushes-title-and-author', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookList.vue'), 'utf8');
@@ -19,18 +19,18 @@ describe('BookList.vue', () => {
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const methods = esquery(ast, 'Property[key.name=methods]');
-    assert(methods.length > 0, 'the methods declaration is not present');
+    assert(methods.length > 0, 'The BookList\'s `methods` declaration is not present');
 
     let results = esquery(methods[0], 'Identifier[name="appendBook"]');
-    assert(results.length > 0, 'appendBook method is not defined');
+    assert(results.length > 0, 'The BookList\'s `methods` object is not defining an `appendBook()` method');
 
     results = esquery(methods[0], 'MemberExpression > MemberExpression > Identifier[name="books"]');
-    assert(results.length > 0, 'appendBook is not pushing to the array `books`');
+    assert(results.length > 0, 'The BookList\'s `appendBook()` method is not pushing anything to the array `books`');
 
     results = esquery(methods[0], 'CallExpression > ObjectExpression > Property[key.name="title"][value.name="bookTitle"]');
-    assert(results.length > 0, 'the title key is not sending the bookTitle arguement');
+    assert(results.length > 0, 'In BookList\'s `appendBook()` method call, the `title` key is not sending the `bookTitle` argument');
 
     results = esquery(methods[0], 'CallExpression > ObjectExpression > Property[key.name="author"][value.name="bookAuthor"]');
-    assert(results.length > 0, 'the author key is not sending the bookAuthor arguement');
+    assert(results.length > 0, 'In BookList\'s `appendBook()` method call, the `author` key is not sending the `bookAuthor` argument');
   });
 });

@@ -28,6 +28,6 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('div');
-    assert(results.innerHTML.includes('book-form'), 'BookList does not contain any book-form tags');
+    assert(results.innerHTML.includes('book-form'), 'BookList does not contain any `book-form` tags');
   });
 });
