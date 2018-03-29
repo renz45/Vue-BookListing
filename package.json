@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "unit:part1": "npm run unit -- --part part1",
     "unit:part2": "npm run unit -- --part part2",
     "mocha": "NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js'",
@@ -16,7 +15,7 @@
     "mocha:part3": "NODE_ENV=test mocha 'test/unit/mocha/part3/*.spec.js'",
     "mocha:part4": "NODE_ENV=test mocha 'test/unit/mocha/part4/*.spec.js'",
     "mocha:part5": "NODE_ENV=test mocha 'test/unit/mocha/part5/*.spec.js'",
-    "test": "npm run mocha && npm run unit",
+    "test": "npm run mocha",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js"
   },
