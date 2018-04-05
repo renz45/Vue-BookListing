@@ -28,10 +28,10 @@ describe('BookForm.vue', () => {
 
     // Test for for form existance
     const results = document.querySelector('form');
-    assert(results.length > 0, 'BookForm does not contain a form');
+    assert(results.length > 0, 'The BookForm template does not contain a `form` tag');
 
-    assert(results.outerHTML.includes('submit.prevent'), 'BookForm does not have an v-on:submit.prevent');
+    assert(results.outerHTML.includes('submit.prevent'), 'The `form` tag in the BookForm template does not include `v-on:submit.prevent`');
 
-    assert(results.outerHTML.includes('bookSubmit(bookTitle, bookAuthor)'), 'BookForm does not call bookSubmit');
+    assert(results.outerHTML.includes('bookSubmit(bookTitle, bookAuthor)'), 'The `v-on:submit.prevent` called in BookForm\'s `form` tag does not call the `bookSubmit()` method');
   });
 });

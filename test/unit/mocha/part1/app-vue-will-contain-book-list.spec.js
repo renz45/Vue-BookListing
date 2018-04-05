@@ -26,11 +26,11 @@ describe('App.vue', () => {
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     let results = esquery(ast, 'ImportDeclaration[source.value="./components/BookList"]');
-    assert(results.length > 0, './components/BookList was not imported');
+    assert(results.length > 0, '`./components/BookList` was not imported');
 
     // Test for bookList definition in the component key
     results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookList]');
-    assert(results.length > 0, 'BookList is not defined under components property in object');
+    assert(results.length > 0, '`BookList` is not defined as a value in an object in the `components` property');
 
     // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
@@ -40,6 +40,6 @@ describe('App.vue', () => {
 
     // Test for booklist in the app div
     results = document.querySelector('div#app book-list');
-    assert(results, 'BookList is not defined inside of a div with the id of app');
+    assert(results, 'The `<book-list>` element does not exist inside of a div with the id of app');
   });
 });

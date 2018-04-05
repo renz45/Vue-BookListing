@@ -23,10 +23,10 @@ describe('BookItem.vue', () => {
 
     // Test for #app present in the styles
     const results = parsed.cssRules.find(node => node.selectorText === 'li');
-    assert(results, 'There is no li present in your style section');
+    assert(results, 'There is no `li` selector in BookItem\'s styles');
 
     // Test for one of the fonts present in font-family
-    assert(results.style.display === 'block', 'Your li display is not set to block');
+    assert(results.style.display === 'block', 'The li `display` property is not set to `block` in BookItem\'s styles');
   });
 });
 
@@ -49,6 +49,6 @@ describe('BookList.vue', () => {
 
     // Test for #app present in the styles
     const results = parsed.cssRules.find(node => node.selectorText === 'li');
-    assert(results === undefined, 'There should not be a li present in your style section');
+    assert(results === undefined, 'There should not be any `li` rules present in BookList\'s styles');
   });
 });

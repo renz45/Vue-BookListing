@@ -22,9 +22,9 @@ describe('BookList.vue', () => {
 
     // Test for #app present in the styles
     const results = parsed.cssRules.find(node => node.selectorText === 'h1, h2');
-    assert(results, 'The "h1, h2" selector is not present in your styles');
+    assert(results, 'The `"h1, h2"` selector is not present in BookList\'s styles');
 
     // Test for one of the fonts present in font-family
-    assert(results.style['font-weight'].includes('normal'), 'Your font-weight is not set to normal');
+    assert(results.style['font-weight'].includes('normal'), 'The `font-weight` is not set to `normal` in BookList\'s styles');
   });
 });

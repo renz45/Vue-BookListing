@@ -24,9 +24,9 @@ describe('BookForm.vue', () => {
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
 
     let results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="name"] Literal[value="BookForm"]');
-    assert(results.length > 0, './BookForm does not have a name property with the value of BookForm');
+    assert(results.length > 0, 'The BookForm does not have a `name` property with the value of `BookForm`');
 
     results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"] Literal[value="books"]');
-    assert(results.length > 0, './BookForm does not have a props property with the value of books');
+    assert(results.length > 0, 'The BookForm does not have a `props` property with the value of `[\'books\']`');
   });
 });

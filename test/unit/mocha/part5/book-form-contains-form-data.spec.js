@@ -28,6 +28,6 @@ describe('BookForm.vue', () => {
 
     // Test for for form existance
     const results = document.querySelector('form');
-    assert(results.length > 0, 'BookForm does not contain a form');
+    assert(results.length > 0, 'The BookForm template does not contain a `form` tag');
   });
 });

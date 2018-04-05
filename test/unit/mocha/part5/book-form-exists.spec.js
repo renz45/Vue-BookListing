@@ -17,12 +17,12 @@ describe('BookForm.vue', () => {
     const doc = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
     const nodes = doc.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
-    assert(script, 'No script tag exists in BookForm.vue');
+    assert(script, 'No `script` tag exists in BookForm.vue');
 
     const template = nodes.filter(node => node.nodeName === 'template');
-    assert(template, 'No template tag exists in BookForm.vue');
+    assert(template, 'No `template` tag exists in BookForm.vue');
 
     const style = nodes.filter(node => node.nodeName === 'style');
-    assert(style, 'No style tag exists in BookForm.vue');
+    assert(style, 'No `style` tag exists in BookForm.vue');
   });
 });

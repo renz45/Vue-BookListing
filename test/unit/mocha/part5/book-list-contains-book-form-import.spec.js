@@ -23,9 +23,9 @@ describe('BookList.vue', () => {
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     let results = esquery(ast, 'ImportDeclaration[source.value="./BookForm"]');
-    assert(results.length > 0, './BookItem was not imported');
+    assert(results.length > 0, 'The `BookForm` class was not imported from `./BookItem` In BookList.vue');
 
     results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookForm]');
-    assert(results.length > 0, 'BookForm is not defined under components property in object');
+    assert(results.length > 0, 'The value of the `components` property is not an object containing `BookForm` in BookList.vue');
   });
 });

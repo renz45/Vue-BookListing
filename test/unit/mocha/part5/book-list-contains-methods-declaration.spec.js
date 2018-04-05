@@ -19,6 +19,6 @@ describe('BookList.vue', () => {
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const methods = esquery(ast, 'Property[key.name=methods]');
-    assert(methods.length > 0, 'the methods declaration is not present');
+    assert(methods.length > 0, 'The BookList\'s `methods` declaration is not present');
   });
 });
