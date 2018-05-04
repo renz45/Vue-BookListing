@@ -28,11 +28,17 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('ul');
+    if (results == null) {
+      assert(false, "There is no `ul` tag in the BookList template.")
+    }
+
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {
       assert(results.innerHTML.includes('li'), 'The BookList template does not contain any `li` tags');
-      assert(results.innerHTML.includes('{{book.title}}:{{book.author}}'), 'The BookList template\'s `li` element does not contain these interpolated values `{{book.title}}:{{book.author}}`');
+      let re = /\{\{\s*book\.title\s*\}\}\s*\:\s*\{\{\s*book\.author\s*\}\}/
+      let match = results.innerHTML.match(re)
+      assert(match != null && match.length == 1, 'The BookList template\'s `li` element does not contain these interpolated values `{{book.title}}\:{{book.author}}`');
     }
   });
 });

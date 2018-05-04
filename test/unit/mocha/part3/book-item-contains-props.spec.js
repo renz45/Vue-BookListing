@@ -17,8 +17,12 @@ describe('BookItem.vue', () => {
 
     // Parse document and retrieve the script section
     const doc = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
+
     const nodes = doc.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
+    if (script.length == 0) {
+      assert(false, "We either didn't find a script tag, or any code in a script tag in the BookItem component.")
+    }
 
     // Test for correct import statement
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });

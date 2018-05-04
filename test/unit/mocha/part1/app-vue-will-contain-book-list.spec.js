@@ -6,6 +6,7 @@ const esquery = require('esquery');
 const esprima = require('esprima');
 const jsdom = require('jsdom');
 
+
 const { JSDOM } = jsdom;
 
 
@@ -39,7 +40,9 @@ describe('App.vue', () => {
     const document = dom.window.document;
 
     // Test for booklist in the app div
-    results = document.querySelector('div#app book-list');
-    assert(results, 'The `<book-list>` element does not exist inside of a div with the id of app');
+
+    results = document.querySelectorAll('div#app book-list');
+    assert(results.length == 1, "There doesn't appear to be a single `book-list` element with opening and closing tags inside of a div in App.vue.")
+    assert(results, 'The `<book-list>` element does not exist inside of a div in App.vue.');
   });
 });

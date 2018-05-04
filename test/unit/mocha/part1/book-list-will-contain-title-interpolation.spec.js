@@ -22,12 +22,18 @@ describe('BookList.vue', () => {
 
     // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
+    
+    if (template.length == 0) {
+      assert(false, "The BookList component does not contain a template tag")
+    }
+    
     const content = parse5.serialize(template[0].content);
     const dom = new JSDOM(content, { includeNodeLocations: true });
     const document = dom.window.document;
 
     // Test for booklist in the app div
     const results = document.querySelector('h1');
+    assert(results != null, "The BookList template does not contain an h1 tag")
     assert(results.innerHTML === '{{title}}', 'The BookList template does not contain the `{{title}}` in an `h1`');
   });
 });

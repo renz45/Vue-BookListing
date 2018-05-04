@@ -23,6 +23,11 @@ describe('BookList.vue', () => {
 
     // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
+
+    if (template.length == 0) {
+      assert(false, "The BookList component does not contain a template tag")
+    }
+
     const content = parse5.serialize(template[0].content);
     const dom = new JSDOM(content, { includeNodeLocations: true, SVG_LCASE: true });
     const document = dom.window.document;
@@ -31,6 +36,9 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('ul');
+    if (results == null) {
+      assert(false, "There is no `ul` tag in the BookList template.")
+    }
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {

@@ -22,13 +22,18 @@ describe('BookForm.vue', () => {
 
     // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
+    if (template.length == 0) {
+      assert(false, "The BookForm component does not contain a template tag")
+    }
+
     const content = parse5.serialize(template[0].content);
     const dom = new JSDOM(content, { includeNodeLocations: true, SVG_LCASE: true });
     const document = dom.window.document;
 
     // Test for for form existance
     const results = document.querySelector('form');
-    assert(results.length > 0, 'BookForm does not contain a form');
+    assert(results != null, 'The BookForm template does not contain a `form` tag');
+    assert(results.length > 0, 'The BookForm template does not contain a `form` tag');
 
     assert(results.innerHTML.includes('v-model="bookTitle"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookTitle`');
 

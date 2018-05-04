@@ -28,6 +28,9 @@ describe('BookList.vue', () => {
 
     // Test for booklist in the app div
     const results = document.querySelector('ul');
+    if (results == null) {
+      assert(false, "There is no `ul` tag in the BookList template.")
+    }
     if (results.innerHTML.includes('book-item')) {
       assert(true);
     } else {

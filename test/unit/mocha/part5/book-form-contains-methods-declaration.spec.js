@@ -16,9 +16,23 @@ describe('BookForm.vue', () => {
     const document = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
     const nodes = document.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
+    if (script.length == 0) {
+      assert(false, "We either didn't find a script tag, or any code in a script tag in the BookForm component.")
+    }
 
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    const methods = esquery(ast, 'Property[key.name=methods]');
+    let ast
+    try {
+      ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    } catch (e) {
+      assert(false, "Something went wrong and we weren't able to check your code.")
+    }
+
+    let methods
+    try {
+      methods = esquery(ast, 'Property[key.name=methods]');
+    } catch(e) {
+      assert(false, "Something went wrong and we weren't able to check your code.")
+    }
     assert(methods.length > 0, 'The BookForm\'s `methods` declaration is not present');
   });
 });
