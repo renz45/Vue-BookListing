@@ -14,8 +14,12 @@ describe('App.vue', () => {
       assert(false, 'The BookList component does not exist');
     }
     const document = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
-    const nodes = document.childNodes;
+    nodes = document.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
+
+    if (script.length == 0) {
+      assert(false, "We either didn't find a script tag, or any code in a script tag in the BookList component.")
+    }
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const data = esquery(ast, 'Property[key.name=data]');

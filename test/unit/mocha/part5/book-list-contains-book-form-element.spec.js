@@ -22,12 +22,18 @@ describe('BookList.vue', () => {
 
     // Parse for HTML in template
     const template = nodes.filter(node => node.nodeName === 'template');
+    if (template.length == 0) {
+      assert(false, "The BookForm component does not contain a template tag")
+    }
+
     const content = parse5.serialize(template[0].content);
     const dom = new JSDOM(content, { includeNodeLocations: true, SVG_LCASE: true });
     const document = dom.window.document;
 
     // Test for booklist in the app div
     const results = document.querySelector('div');
+    const results2 = results.querySelectorAll('book-form')
+    assert(results2.length <= 1, 'BookList shouldn\'t contain more than one `book-form` tag.')
     assert(results.innerHTML.includes('book-form'), 'BookList does not contain any `book-form` tags');
   });
 });

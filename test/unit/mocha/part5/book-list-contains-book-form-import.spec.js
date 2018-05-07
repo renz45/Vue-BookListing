@@ -19,9 +19,18 @@ describe('BookList.vue', () => {
     const doc = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
     const nodes = doc.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
+    if (script.length == 0) {
+      assert(false, "We either didn't find a script tag, or any code in a script tag in the BookForm component.")
+    }
 
     // Test for correct import statement
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    let ast
+    try {
+      ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    } catch (e) {
+      assert(false, "Something went wrong and we weren't able to check your code.")
+    }
+
     let results = esquery(ast, 'ImportDeclaration[source.value="./BookForm"]');
     assert(results.length > 0, 'The `BookForm` class was not imported from `./BookItem` In BookList.vue');
 

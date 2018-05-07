@@ -17,6 +17,10 @@ describe('BookForm.vue', () => {
     const nodes = document.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
 
+    if (script.length == 0) {
+      assert(false, "We either didn't find a script tag, or any code in a script tag in the BookForm component.")
+    }
+
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
     const data = esquery(ast, 'Property[key.name=data]');
     assert(data.length > 0, 'The BookList\'s `data()` method\'s return is not present');
