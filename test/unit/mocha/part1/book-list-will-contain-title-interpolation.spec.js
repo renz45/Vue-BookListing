@@ -34,6 +34,8 @@ describe('BookList.vue', () => {
     // Test for booklist in the app div
     const results = document.querySelector('h1');
     assert(results != null, "The BookList template does not contain an h1 tag")
-    assert(results.innerHTML === '{{title}}', 'The BookList template does not contain the `{{title}}` in an `h1`');
+    let re = /\{\{\s*title\s*\}\}/g
+    let match = results.innerHTML.match(re)
+    assert(match != null && match.length == 1, 'The BookList template does not contain the `{{title}}` in an `h1`');
   });
 });
