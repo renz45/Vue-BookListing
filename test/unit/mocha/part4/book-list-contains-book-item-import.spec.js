@@ -21,7 +21,14 @@ describe('BookList.vue', () => {
     const script = nodes.filter(node => node.nodeName === 'script');
 
     // Test for correct import statement
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+
+    let ast
+    try {
+      ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    } catch (e) {
+      assert(false, "It looks like your import statement is missing a semicolon at the end.")      
+    }
+    
     let results = esquery(ast, 'ImportDeclaration[source.value="./BookItem"]');
     assert(results.length > 0, 'The `BookItem` class was not imported from `./BookItem` In BookList.vue');
 

@@ -21,7 +21,13 @@ describe('BookList.vue', () => {
     const script = nodes.filter(node => node.nodeName === 'script');
 
     // Test for bookList definition in the component key
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    let ast
+    try {
+      ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    } catch (e) {
+      assert(false, "It looks like your import statement is missing a semicolon at the end.")      
+    }
+
     const results = esquery(ast, 'Property[key.name=components] > ObjectExpression > Property[key.name=BookItem]');
     assert(results.length > 0, 'The value of the `components` property is not an object containing `BookItem` in BookList.vue');
   });

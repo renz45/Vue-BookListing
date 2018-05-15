@@ -19,10 +19,10 @@ describe('BookItem.vue', () => {
     const nodes = doc.childNodes;
     const styles = nodes.filter(node => node.nodeName === 'style');
     if (styles.length == 0) {
-      assert(false, "The BookList.vue file does not contain a style element.")
+      assert(false, "The BookItem.vue file does not contain a style element.")
     }
     if (styles[0].childNodes.length == 0) {
-      assert(false, "The BookList style tag does not contain any CSS rules.")
+      assert(false, "The BookItem style tag does not contain any CSS rules.")
     }
     const style = styles[0].childNodes[0].value;
     const parsed = cssom.parse(style);

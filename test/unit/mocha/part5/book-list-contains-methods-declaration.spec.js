@@ -20,7 +20,13 @@ describe('BookList.vue', () => {
       assert(false, "We either didn't find a script tag, or any code in a script tag in the BookForm component.")
     }
 
-    const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    let ast
+    try {
+      ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
+    } catch (e) {
+      assert(false, "Something went wrong and we weren't able to check your code.")
+    }
+
     const methods = esquery(ast, 'Property[key.name=methods]');
     assert(methods.length > 0, 'The BookList\'s `methods` declaration is not present');
   });
