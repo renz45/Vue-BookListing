@@ -30,7 +30,9 @@ describe('BookItem.vue', () => {
     let results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="name"] Literal[value="BookItem"]');
     assert(results.length > 0, 'The BookItem component does not have a `name` property with the value of `BookItem` defined in the `export default` section');
 
-    results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"] Literal[value="book"]');
-    assert(results.length > 0, 'The BookItem component does not have a `props` property with an array value containing the string `book` defined in the `export default` section');
+    // console.log(esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"]'))
+    results = esquery(ast, 'ExportDefaultDeclaration Property[key.name="props"]');
+    // console.log(results[0].value)
+    assert(results.length > 0 && results[0].value.type == 'ArrayExpression' && results[0].value.elements[0].value == 'book', 'The BookItem component does not have a `props` property with an array value containing the string `book` defined in the `export default` section');
   });
 });
